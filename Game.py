@@ -17,6 +17,7 @@ cur=DB.cursor()
 
 os.system("cls")
 now=DT.now()
+flag=True
 
 first_name=input("\n Enter Your First Name : ")      #User input for first name
 last_name=input("\n Enter Your Last Name : ")        #User input for last name
@@ -36,7 +37,10 @@ def display_screen():                                #Function for displaying Us
     print('''\tHorses Available for betting\n\t58  711  525  877  199  888  10\n''')
 def main_menu():                                     #Function of main menu/Main Function
     display_screen()
-    res=check_choice()
+    if flag==False:
+        res=1
+    else:
+        res=check_choice()
     if res==1:
         try:
             user_choice=int(input("\n Enter Your Betting Horse Number : "))
@@ -116,7 +120,9 @@ def play_again():                                #Function for checking if user 
         print("\tInput Other than integer not Allowed !!")
         play_again()
     if ch==1:
-        main_menu()
+           global flag
+           flag=False
+           main_menu()
     elif ch==2:
         exit_game()
     else:
